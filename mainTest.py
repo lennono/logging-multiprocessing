@@ -1,4 +1,5 @@
 from exception import CustomHandling
+from loggingQueue import CustomLogging
 from multiprocessing import Queue
 queue = Queue()  # Need  a better solution here
 
@@ -9,4 +10,7 @@ def zero_divide():
 
 
 if __name__ == '__main__':
+    p = CustomLogging(queue)
+    p.start()
     zero_divide()
+
