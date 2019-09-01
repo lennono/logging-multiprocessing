@@ -18,8 +18,6 @@ class CustomHandling:
                 err = "There was an exception in  "
                 err += func.__name__
                 self.queue.put(err)
-
-            # re-raise the exception
-            raise
+                print(err)
         return wrapper
 
