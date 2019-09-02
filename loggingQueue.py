@@ -12,6 +12,9 @@ class CustomLogging(Process):
 
     def run(self):
         while True:  # need to exit at some stage
-            print(self.queue.get())
-
+            record = self.queue.get()
+            if record is None:
+                print("closing")
+                break
+            print(record)
 

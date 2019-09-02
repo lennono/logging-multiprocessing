@@ -1,3 +1,6 @@
+from functools import wraps
+
+
 class CustomHandling:
     """
     A decorator that wraps the passed in function. Will push exceptions to
@@ -10,6 +13,7 @@ class CustomHandling:
         self.queue = queue
 
     def __call__(self, func):
+        @wraps(func)
         def wrapper(*args, **kwargs):
             try:
                 return func(*args, **kwargs)

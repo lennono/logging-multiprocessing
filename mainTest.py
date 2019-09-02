@@ -13,4 +13,5 @@ if __name__ == '__main__':
     p = CustomLogging(queue)
     p.start()
     zero_divide()
+    queue.put(None)
 
