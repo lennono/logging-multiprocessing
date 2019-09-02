@@ -17,9 +17,9 @@ class CustomHandling:
         def wrapper(*args, **kwargs):
             try:
                 return func(*args, **kwargs)
-            except:
+            except:  # *Explained in two lines
                 # log the exception - Have to expand for more clarity
-                err = "There was an exception in  "
+                err = "There was an exception in "  # *need way better exceptions thrown
                 err += func.__name__
                 self.queue.put(err)
         return wrapper
