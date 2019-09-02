@@ -15,12 +15,15 @@ class CustomHandling:
     def __call__(self, func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            try:
+            try:  # will keep expanding
                 return func(*args, **kwargs)
-            except:  # *Explained in two lines
-                # log the exception - Have to expand for more clarity
-                err = "There was an exception in "  # *need way better exceptions thrown
+            except ValueError as error:
+                print(error)
+            except (TypeError, ZeroDivisionError) as error:
+                err = "There was an exception in "
                 err += func.__name__
-                self.queue.put(err)
+                self.queue.put(error)
+            except():
+                pass
         return wrapper
 
