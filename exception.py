@@ -23,7 +23,7 @@ class CustomHandling:
                 err = "There was an exception in "
                 err += func.__name__
                 self.queue.put(error)
-            except():
+            except:
                 pass
         return wrapper
 
