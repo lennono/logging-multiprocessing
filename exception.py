@@ -13,17 +13,15 @@ class CustomHandling:
         self.queue = queue
 
     def __call__(self, func):
-        @wraps(func)
         def wrapper(*args, **kwargs):
-            try:  # will keep expanding
+            try:
                 return func(*args, **kwargs)
-            except ValueError as error:
-                print(error)
-            except (TypeError, ZeroDivisionError) as error:
+            except (KeyboardInterrupt, SystemExit):
+                pass
+            except Exception as error:
                 err = "There was an exception in "
                 err += func.__name__
                 self.queue.put(error)
-            except:
-                pass
+                raise
         return wrapper
 

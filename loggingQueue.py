@@ -18,7 +18,8 @@ class CustomLogging(Process):
             if record is None:
                 print("closing")
                 break
-            self.handle(record)
+            else:
+                self.handle(record)
 
     def create_logger(self):  # should probably be static. Just quick test
         """
@@ -39,6 +40,6 @@ class CustomLogging(Process):
         return logger
 
     def handle(self, record):
-        self.log.exception(record)
+        self.log.exception(record, exc_info=record)  # have to do better formatting here
 
 
