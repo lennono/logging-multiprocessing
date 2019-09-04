@@ -25,13 +25,13 @@ class CustomLogging(Process):
         """
         Creates a logging object and returns it
         """
-        logger = logging.getLogger("example_logger")
+        logger = logging.getLogger("program_logger")
         logger.setLevel(logging.INFO)
 
         # create the logging file handler
         fh = logging.FileHandler("test.log")
 
-        fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        fmt = '%(asctime)s '
         formatter = logging.Formatter(fmt)
         fh.setFormatter(formatter)
 
@@ -40,6 +40,6 @@ class CustomLogging(Process):
         return logger
 
     def handle(self, record):
-        self.log.exception(record, exc_info=record)  # have to do better formatting here
+        self.log.exception(record[0], exc_info=record[1])  # have to do better formatting here
 
 
