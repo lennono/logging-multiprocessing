@@ -6,7 +6,6 @@ class CustomHandling:
     """
 
     def __init__(self, queue):
-        self.attr = "a custom function attribute"
         self.queue = queue
 
     def __call__(self, func):
@@ -16,6 +15,7 @@ class CustomHandling:
             except (KeyboardInterrupt, SystemExit):
                 pass
             except Exception as error:
+                print(error.args)
                 err = func.__name__
                 self.queue.put((err, error))
         return wrapper
