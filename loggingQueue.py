@@ -10,21 +10,22 @@ class CustomLogging(Process):
     def __init__(self, queue):
         super(CustomLogging, self).__init__()
         self.queue = queue
-        self._log = None
+        self._log = self.create_logger()
 
     def run(self):
         while True:
             record = self.queue.get()
             if record is None:
                 break
-            print(record)
+            else:
+                self._log.exception(record[0], exc_info=record[1])
 
-    @property
-    def create_logger(self, record):  # should probably be static. Just quick test
+    @staticmethod
+    def create_logger():  # should probably be static. Just quick test
         """
         Creates a logging object and logs error
         """
-        logger = logging.getLogger(record[0])
+        logger = logging.getLogger()
         logger.setLevel(logging.DEBUG)
 
         # create the logging file handler
@@ -36,7 +37,6 @@ class CustomLogging(Process):
 
         # add handler to logger object
         logger.addHandler(fh)
-        logger.exception(record[0], exc_info=record[1])
-        return self._log
+        return logger
 
 

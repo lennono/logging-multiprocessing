@@ -15,7 +15,6 @@ class CustomHandling:
             except (KeyboardInterrupt, SystemExit):
                 pass
             except Exception as error:
-                print(error.args)
                 err = func.__name__
                 self.queue.put((err, error))
         return wrapper
