@@ -1,7 +1,7 @@
 from exception import CustomHandling
 from loggingQueue import CustomLogging
 from multiprocessing import Queue
-queue = Queue()  # Need  a better solution here
+queue = Queue()
 
 
 @CustomHandling(queue)

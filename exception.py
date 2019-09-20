@@ -17,5 +17,6 @@ class CustomHandling:
             except Exception as error:
                 err = func.__name__
                 self.queue.put((err, error))
+                raise
         return wrapper
 
