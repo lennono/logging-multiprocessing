@@ -1,4 +1,4 @@
-After checking existing options and publish/subscribing systems this isn't a worthwhile endevear. Will leave up as an example of a concurrent structure ate work
+After checking existing options and publish/subscribing systems this isn't a worth while endevear. Will leave up as an example of a concurrent structure at work
 
 # Mulitprocessing example 
 
